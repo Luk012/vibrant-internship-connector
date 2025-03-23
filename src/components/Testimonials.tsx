@@ -13,14 +13,14 @@ const testimonials = [
     name: 'Raj P.',
     position: 'Business Major',
     school: 'NYU',
-    quote: 'The matching algorithm is scary good. Every internship suggestion actually fits what I'm looking for, no more scrolling through irrelevant listings!',
+    quote: "The matching algorithm is scary good. Every internship suggestion actually fits what I'm looking for, no more scrolling through irrelevant listings!",
     color: 'bubble-teal'
   },
   {
     name: 'Taylor K.',
     position: 'Design Student',
     school: 'RISD',
-    quote: 'As a creative, I was struggling to find internships that matched my skills. InternMate connected me with a gaming studio I hadn't even heard of, and now I have my dream job!',
+    quote: "As a creative, I was struggling to find internships that matched my skills. InternMate connected me with a gaming studio I hadn't even heard of, and now I have my dream job!",
     color: 'bubble-orange'
   },
   {

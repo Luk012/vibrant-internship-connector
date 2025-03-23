@@ -5,7 +5,7 @@ const team = [
   {
     name: 'Mia',
     role: 'Founder & CEO',
-    bio: 'Former recruiter who got tired of seeing awesome students get overlooked. Now she's on a mission to fix the internship search forever.',
+    bio: "Former recruiter who got tired of seeing awesome students get overlooked. Now she's on a mission to fix the internship search forever.",
     color: 'bg-internmate-light-purple',
     textColor: 'text-internmate-purple',
     emoji: '👑'
