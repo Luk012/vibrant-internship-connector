@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
+import PufferFish from './PufferFish';
 
 const team = [
   {
@@ -91,12 +92,27 @@ const TeamMember: React.FC<{
 
 const Team: React.FC = () => {
   return (
-    <section id="team" className="py-24 bg-white/50 backdrop-blur-sm">
-      <div className="section-container">
-        <div className="text-center mb-16">
-          <h2 className="heading-lg">Meet the Team<span className="text-internmate-purple">.</span></h2>
+    <section id="team" className="py-24 bg-white/50 backdrop-blur-sm relative overflow-hidden">
+      {/* Animated puffer fish elements */}
+      <div className="absolute -left-20 top-10 transform rotate-12 animate-float-slow">
+        <PufferFish size={120} />
+      </div>
+      <div className="absolute right-10 bottom-10 transform -rotate-12 animate-bounce-slow">
+        <PufferFish size={100} />
+      </div>
+      <div className="absolute right-40 top-16 transform rotate-45 animate-pulse-slow">
+        <PufferFish size={80} />
+      </div>
+      
+      {/* Main content */}
+      <div className="section-container relative z-10">
+        <div className="text-center mb-16 relative">
+          <div className="absolute left-1/2 -translate-x-1/2 -top-20 z-10 animate-scale-slow">
+            <PufferFish size={80} />
+          </div>
+          <h2 className="heading-lg">Meet the Team<span className="text-youllgetit">.</span></h2>
           <p className="text-xl opacity-70 max-w-2xl mx-auto mt-4">
-            The cool humans behind InternMate
+            The cool humans behind You'll Get It
           </p>
         </div>
         
