@@ -10,111 +10,173 @@
     --background: 252 95% 98%;
     --foreground: 260 70% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 260 70% 15%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 260 70% 15%;
-
-    --primary: 258 100% 65%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 174 76% 49%;
-    --secondary-foreground: 260 70% 15%;
-
-    --muted: 260 20% 90%;
-    --muted-foreground: 260 10% 45%;
-
-    --accent: 29 100% 63%;
-    --accent-foreground: 260 70% 15%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 260 30% 90%;
-    --input: 260 30% 90%;
-    --ring: 258 100% 65%;
-
-    --radius: 1rem;
+    /* ... keep existing code (CSS variables) */
+    
+    --pufferfish-color: 48 100% 48%; /* #f4d900 */
   }
   
-  * {
-    @apply border-border;
-  }
-  
-  html {
-    @apply scroll-smooth;
-  }
-  
-  body {
-    @apply bg-background text-foreground font-sans;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238a4fff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
+  /* ... keep existing code (base styles) */
 }
 
 @layer components {
-  .glass {
-    @apply bg-white/60 backdrop-blur-lg border border-white/30 shadow-lg;
+  /* ... keep existing code (component styles) */
+
+  .pufferfish {
+    position: relative;
+    width: 100px;
+    height: 100px;
   }
   
-  .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24;
+  .pufferfish-body {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background-color: hsl(var(--pufferfish-color));
+    border-radius: 50%;
+    top: 10%;
+    left: 10%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
-  .btn-primary {
-    @apply bg-internmate-purple text-white font-bold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-internmate-purple/30 hover:-translate-y-1 active:translate-y-0 active:shadow-md;
+  .pufferfish-spikes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 70%, hsl(var(--pufferfish-color)) 70%, hsl(var(--pufferfish-color)) 75%, transparent 75%);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
   }
   
-  .btn-secondary {
-    @apply bg-internmate-teal text-foreground font-bold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-internmate-teal/30 hover:-translate-y-1 active:translate-y-0 active:shadow-md;
+  .pufferfish-face {
+    position: absolute;
+    width: 60%;
+    height: 30%;
+    top: 35%;
+    left: 25%;
+    z-index: 1;
   }
   
-  .card {
-    @apply rounded-3xl p-6 transition-all duration-300 bg-white/80 backdrop-blur-sm border border-white/50 shadow-lg hover:shadow-xl;
-  }
-  
-  .heading-xl {
-    @apply font-display font-bold text-5xl sm:text-6xl md:text-7xl leading-tight;
-  }
-  
-  .heading-lg {
-    @apply font-display font-bold text-4xl sm:text-5xl leading-tight;
-  }
-  
-  .heading-md {
-    @apply font-display font-bold text-3xl leading-snug;
-  }
-  
-  .bubble {
-    @apply relative p-6 rounded-3xl;
-  }
-  
-  .bubble::after {
+  .pufferfish-face::before,
+  .pufferfish-face::after {
     content: '';
-    @apply absolute w-6 h-6 -bottom-3 left-6 rotate-45;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: black;
+    border-radius: 50%;
+    top: 0;
   }
   
-  .bubble-purple {
-    @apply bubble bg-internmate-purple text-white;
+  .pufferfish-face::before {
+    left: 15%;
   }
   
-  .bubble-purple::after {
-    @apply bg-internmate-purple;
+  .pufferfish-face::after {
+    right: 15%;
   }
   
-  .bubble-teal {
-    @apply bubble bg-internmate-teal text-foreground;
+  .pufferfish-face::after {
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 1px;
+    background-color: #000;
+    bottom: 0;
+    left: 35%;
+    border-radius: 50%;
+    transform: scaleY(4);
   }
   
-  .bubble-teal::after {
-    @apply bg-internmate-teal;
+  .pufferfish-fin {
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    background-color: hsl(var(--pufferfish-color) / 90%);
+    top: 40%;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    z-index: -1;
+    transform-origin: center top;
   }
   
-  .bubble-orange {
-    @apply bubble bg-internmate-orange text-foreground;
+  .pufferfish-fin.left {
+    left: 0;
+    transform: rotate(-30deg);
+    animation: fin-wave 2s ease-in-out infinite alternate;
   }
   
-  .bubble-orange::after {
-    @apply bg-internmate-orange;
+  .pufferfish-fin.right {
+    right: 0;
+    transform: rotate(30deg);
+    animation: fin-wave 2s ease-in-out infinite alternate-reverse;
+  }
+  
+  .pufferfish-tail {
+    position: absolute;
+    width: 20px;
+    height: 25px;
+    background-color: hsl(var(--pufferfish-color) / 90%);
+    bottom: 15%;
+    right: -5px;
+    border-radius: 0 50% 50% 0;
+    z-index: -1;
+    transform-origin: left center;
+    animation: tail-wave 1.5s ease-in-out infinite;
+  }
+  
+  .bubble-animation {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    animation: float-up linear forwards;
   }
 }
+
+@keyframes fin-wave {
+  0% { transform: rotate(-30deg); }
+  100% { transform: rotate(-40deg); }
+}
+
+@keyframes tail-wave {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(20deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes float-up {
+  0% { 
+    transform: translateY(0) scale(0.2); 
+    opacity: 0.8;
+  }
+  100% { 
+    transform: translateY(-100px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes swim {
+  0% { transform: translateX(0) rotate(0); }
+  25% { transform: translateX(30px) rotate(10deg); }
+  50% { transform: translateX(0) rotate(0); }
+  75% { transform: translateX(-30px) rotate(-10deg); }
+  100% { transform: translateX(0) rotate(0); }
+}
+
+@layer components {
+  /* ... keep existing code (additional component styles) */
+  
+  .animate-swim {
+    animation: swim 3s ease-in-out infinite;
+  }
+  
+  .animate-fade-out {
+    animation: fade-out 0.8s ease-out forwards;
+  }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; visibility: hidden; }
+}
+
+/* ... keep existing code (other styles) */
