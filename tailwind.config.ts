@@ -63,19 +63,12 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				internmate: {
-					purple: '#8A4FFF',
-					teal: '#1ADDC0',
-					orange: '#FF8C42',
-					yellow: '#FFDA3D',
-					pink: '#FF5C8D',
-					blue: '#58ACFF',
-					'light-purple': '#EDE5FF',
-					'light-teal': '#E0FBF6',
-					'light-orange': '#FFF1E8',
-					'light-yellow': '#FFF9E0',
-					'light-pink': '#FFE6ED',
-					'light-blue': '#E6F3FF'
+				yellit: {
+					primary: '#F4D900',
+					secondary: '#FFB800',
+					accent: '#FFCC33',
+					light: '#FFF5CC',
+					dark: '#665C00'
 				}
 			},
 			borderRadius: {
@@ -127,6 +120,10 @@ export default {
 					'60%': { transform: 'rotate(10deg)' },
 					'80%': { transform: 'rotate(-10deg)' },
 					'100%': { transform: 'rotate(0deg)' }
+				},
+				'eye-follow': {
+					'0%': { transform: 'translate(0, 0)' },
+					'100%': { transform: 'translate(10px, 10px)' }
 				}
 			},
 			animation: {
@@ -138,7 +135,8 @@ export default {
 				'fade-in': 'fadeIn 0.5s ease-out forwards',
 				'scale': 'scale 3s ease-in-out infinite',
 				'marquee': 'marquee 25s linear infinite',
-				'wave': 'wave 2s linear infinite'
+				'wave': 'wave 2s linear infinite',
+				'eye-follow': 'eye-follow 0.3s ease-out forwards'
 			}
 		}
 	},
