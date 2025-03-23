@@ -76,8 +76,7 @@ export default {
 					'light-yellow': '#FFF9E0',
 					'light-pink': '#FFE6ED',
 					'light-blue': '#E6F3FF'
-				},
-				youllgetit: '#f4d900'
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -101,25 +100,13 @@ export default {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-10px)' }
 				},
-				'float-slow': {
-					'0%, 100%': { transform: 'translateY(0)' },
-					'50%': { transform: 'translateY(-15px)' }
-				},
 				pulse: {
 					'0%, 100%': { opacity: '1' },
 					'50%': { opacity: '0.5' }
 				},
-				'pulse-slow': {
-					'0%, 100%': { opacity: '1', transform: 'scale(1)' },
-					'50%': { opacity: '0.8', transform: 'scale(1.05)' }
-				},
 				bounce: {
 					'0%, 100%': { transform: 'translateY(0)' },
 					'50%': { transform: 'translateY(-20px)' }
-				},
-				'bounce-slow': {
-					'0%, 100%': { transform: 'translateY(0)' },
-					'50%': { transform: 'translateY(-25px)' }
 				},
 				fadeIn: {
 					'0%': { opacity: '0', transform: 'translateY(20px)' },
@@ -133,10 +120,6 @@ export default {
 					'0%, 100%': { transform: 'scale(1)' },
 					'50%': { transform: 'scale(1.05)' }
 				},
-				'scale-slow': {
-					'0%, 100%': { transform: 'scale(1)' },
-					'50%': { transform: 'scale(1.15)' }
-				},
 				wave: {
 					'0%': { transform: 'rotate(0deg)' },
 					'20%': { transform: 'rotate(20deg)' },
@@ -144,32 +127,18 @@ export default {
 					'60%': { transform: 'rotate(10deg)' },
 					'80%': { transform: 'rotate(-10deg)' },
 					'100%': { transform: 'rotate(0deg)' }
-				},
-				wiggle: {
-					'0%, 100%': { transform: 'rotate(-3deg)' },
-					'50%': { transform: 'rotate(3deg)' }
-				},
-				puff: {
-					'0%, 100%': { transform: 'scale(1)' },
-					'50%': { transform: 'scale(1.2)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'float': 'float 4s ease-in-out infinite',
-				'float-slow': 'float-slow 6s ease-in-out infinite',
 				'pulse': 'pulse 3s ease-in-out infinite',
-				'pulse-slow': 'pulse-slow 5s ease-in-out infinite',
 				'bounce': 'bounce 2s ease-in-out infinite',
-				'bounce-slow': 'bounce-slow 7s ease-in-out infinite',
 				'fade-in': 'fadeIn 0.5s ease-out forwards',
 				'scale': 'scale 3s ease-in-out infinite',
-				'scale-slow': 'scale-slow 8s ease-in-out infinite',
 				'marquee': 'marquee 25s linear infinite',
-				'wave': 'wave 2s linear infinite',
-				'wiggle': 'wiggle 0.5s ease-in-out infinite',
-				'puff': 'puff 2s ease-in-out infinite'
+				'wave': 'wave 2s linear infinite'
 			}
 		}
 	},

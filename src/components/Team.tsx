@@ -1,39 +1,38 @@
 
 import React, { useEffect, useRef } from 'react';
-import PufferFish from './PufferFish';
 
 const team = [
   {
-    name: "Mia",
-    role: "Founder & CEO",
-    bio: "Former recruiter who got tired of seeing awesome students get overlooked. Now she\"s on a mission to fix the internship search forever.",
-    color: "bg-internmate-light-purple",
-    textColor: "text-internmate-purple",
-    emoji: "👑"
+    name: 'Mia',
+    role: 'Founder & CEO',
+    bio: "Former recruiter who got tired of seeing awesome students get overlooked. Now she's on a mission to fix the internship search forever.",
+    color: 'bg-internmate-light-purple',
+    textColor: 'text-internmate-purple',
+    emoji: '👑'
   },
   {
-    name: "Alex",
-    role: "Backend Wizard",
-    bio: "Turns caffeine into code. Built our matching algorithm after failing to find an internship despite sending 200+ applications.",
-    color: "bg-internmate-light-teal",
-    textColor: "text-internmate-teal",
-    emoji: "🧙‍♂️"
+    name: 'Alex',
+    role: 'Backend Wizard',
+    bio: 'Turns caffeine into code. Built our matching algorithm after failing to find an internship despite sending 200+ applications.',
+    color: 'bg-internmate-light-teal',
+    textColor: 'text-internmate-teal',
+    emoji: '🧙‍♂️'
   },
   {
-    name: "Zoe",
-    role: "Design Queen",
-    bio: "Makes our app look pretty and work beautifully. Thinks job applications should be as fun as dating apps (but with better results).",
-    color: "bg-internmate-light-orange",
-    textColor: "text-internmate-orange",
-    emoji: "🎨"
+    name: 'Zoe',
+    role: 'Design Queen',
+    bio: 'Makes our app look pretty and work beautifully. Thinks job applications should be as fun as dating apps (but with better results).',
+    color: 'bg-internmate-light-orange',
+    textColor: 'text-internmate-orange',
+    emoji: '🎨'
   },
   {
-    name: "Jamal",
-    role: "Growth Hacker",
-    bio: "College dropout turned marketing genius. Convinced 120+ universities to partner with us through pure charm and persistence.",
-    color: "bg-internmate-light-blue",
-    textColor: "text-internmate-blue",
-    emoji: "📈"
+    name: 'Jamal',
+    role: 'Growth Hacker',
+    bio: 'College dropout turned marketing genius. Convinced 120+ universities to partner with us through pure charm and persistence.',
+    color: 'bg-internmate-light-blue',
+    textColor: 'text-internmate-blue',
+    emoji: '📈'
   }
 ];
 
@@ -92,41 +91,12 @@ const TeamMember: React.FC<{
 
 const Team: React.FC = () => {
   return (
-    <section id="team" className="py-24 bg-white/50 backdrop-blur-sm relative overflow-hidden">
-      {/* Pufferfish elements with purposeful animations */}
-      <div className="absolute -left-20 top-20 transform rotate-12 scale-90 opacity-80">
-        <PufferFish 
-          size={120} 
-          className="transition-transform duration-700 hover:rotate-0 hover:scale-110"
-        />
-      </div>
-      
-      <div className="absolute right-10 bottom-20 transform -rotate-12 scale-95">
-        <PufferFish 
-          size={100} 
-          className="transition-transform duration-700 hover:rotate-0 hover:scale-110"
-        />
-      </div>
-      
-      <div className="absolute right-20 top-36 transform rotate-6 scale-75 opacity-90">
-        <PufferFish 
-          size={80} 
-          className="transition-transform duration-700 hover:rotate-0 hover:scale-110"
-        />
-      </div>
-      
-      {/* Main content */}
-      <div className="section-container relative z-10">
-        <div className="text-center mb-16 relative">
-          <div className="absolute left-1/2 -translate-x-1/2 -top-20 z-10">
-            <PufferFish 
-              size={80} 
-              className="transition-transform duration-500 hover:scale-125"
-            />
-          </div>
-          <h2 className="heading-lg">Meet the Team<span className="text-youllgetit">.</span></h2>
+    <section id="team" className="py-24 bg-white/50 backdrop-blur-sm">
+      <div className="section-container">
+        <div className="text-center mb-16">
+          <h2 className="heading-lg">Meet the Team<span className="text-internmate-purple">.</span></h2>
           <p className="text-xl opacity-70 max-w-2xl mx-auto mt-4">
-            The cool humans behind You'll Get It
+            The cool humans behind InternMate
           </p>
         </div>
         
