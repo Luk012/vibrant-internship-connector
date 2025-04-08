@@ -1,6 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+// Method 1: Using the image tag approach
+// No import needed
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -14,7 +15,6 @@ const Header: React.FC = () => {
         setIsScrolled(false);
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -27,10 +27,14 @@ const Header: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <a href="#" className="flex items-center space-x-2">
-            <span className="text-internmate-purple font-display font-bold text-2xl">InternMate</span>
+          <a href="#" className="flex items-center">
+            {/* Using img tag to avoid TypeScript errors */}
+            <img 
+              src="public/Untitled-3 copy.svg" 
+              alt="InternMate Logo" 
+              className="h-16" 
+            />
           </a>
-
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 items-center">
             <a href="#how-it-works" className="font-medium hover:text-internmate-purple transition-colors">
@@ -47,7 +51,6 @@ const Header: React.FC = () => {
             </a>
             <button className="btn-primary">Get the App</button>
           </nav>
-
           {/* Mobile menu button */}
           <button 
             className="md:hidden text-internmate-purple" 
@@ -57,7 +60,6 @@ const Header: React.FC = () => {
           </button>
         </div>
       </div>
-
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 glass">

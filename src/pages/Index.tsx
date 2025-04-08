@@ -1,9 +1,10 @@
-
 import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Stats from '../components/Stats';
 import HowItWorks from '../components/HowItWorks';
+import WhyUs from '../components/WhyUs';
+import PufferfishSymbolismSection from '../components/PufferfishSymbolismSection';
 import Team from '../components/Team';
 import Testimonials from '../components/Testimonials';
 import Footer from '../components/Footer';
@@ -33,7 +34,9 @@ const Index = () => {
       <Header />
       <Hero />
       <HowItWorks />
-      <Stats />
+      <WhyUs />
+      <PufferfishSymbolismSection />
+  
       <Team />
       <Testimonials />
       <Footer />

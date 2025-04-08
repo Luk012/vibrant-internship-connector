@@ -1,38 +1,37 @@
-
 import React, { useEffect, useRef } from 'react';
 
 const team = [
   {
-    name: 'Mia',
-    role: 'Founder & CEO',
-    bio: "Former recruiter who got tired of seeing awesome students get overlooked. Now she's on a mission to fix the internship search forever.",
+    name: 'Darmar',
+    role: 'Michi maus',
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     color: 'bg-internmate-light-purple',
     textColor: 'text-internmate-purple',
-    emoji: '👑'
+    imagePath: 'darmar.png'
   },
   {
-    name: 'Alex',
-    role: 'Backend Wizard',
-    bio: 'Turns caffeine into code. Built our matching algorithm after failing to find an internship despite sending 200+ applications.',
+    name: 'Stefan',
+    role: 'Michi maus',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."',
     color: 'bg-internmate-light-teal',
     textColor: 'text-internmate-teal',
-    emoji: '🧙‍♂️'
+    imagePath: 'stefan.png'
   },
   {
-    name: 'Zoe',
-    role: 'Design Queen',
-    bio: 'Makes our app look pretty and work beautifully. Thinks job applications should be as fun as dating apps (but with better results).',
+    name: 'Luk',
+    role: 'Michi maus',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     color: 'bg-internmate-light-orange',
     textColor: 'text-internmate-orange',
-    emoji: '🎨'
+    imagePath: 'luk.png'
   },
   {
-    name: 'Jamal',
-    role: 'Growth Hacker',
-    bio: 'College dropout turned marketing genius. Convinced 120+ universities to partner with us through pure charm and persistence.',
+    name: 'Sebi',
+    role: 'Michi maus',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     color: 'bg-internmate-light-blue',
     textColor: 'text-internmate-blue',
-    emoji: '📈'
+    imagePath: 'sebi.png'
   }
 ];
 
@@ -42,9 +41,9 @@ const TeamMember: React.FC<{
   bio: string;
   color: string;
   textColor: string;
-  emoji: string;
+  imagePath: string;
   index: number;
-}> = ({ name, role, bio, color, textColor, emoji, index }) => {
+}> = ({ name, role, bio, color, textColor, imagePath, index }) => {
   const memberRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
@@ -71,19 +70,35 @@ const TeamMember: React.FC<{
   return (
     <div 
       ref={memberRef}
-      className={`card ${color} opacity-0`}
+      className="relative group overflow-hidden rounded-2xl opacity-0"
       style={{ 
         transitionDelay: `${index * 0.15}s`, 
-        transitionDuration: '0.6s' 
+        transitionDuration: '0.6s',
+        height: 'h-full'
       }}
     >
-      <div className="flex flex-col items-center">
-        <div className={`w-24 h-24 ${textColor.replace('text', 'bg')} rounded-full flex items-center justify-center mb-4`}>
-          <span className="text-5xl">{emoji}</span>
-        </div>
-        <h3 className="text-2xl font-display font-bold">{name}</h3>
-        <p className={`${textColor} font-semibold mb-2`}>{role}</p>
-        <p className="text-center text-foreground/70">{bio}</p>
+      {/* Image */}
+      <div className="w-full h-full">
+        <img
+          src={imagePath}
+          alt={name}
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          style={{ objectPosition: "center 20%" }}
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = "/api/placeholder/400/350";
+          }}
+        />
+      </div>
+      
+      {/* Hover overlay with solid color background and information */}
+      <div 
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center"
+        style={{ backgroundColor: '#FAE959' }}
+      >
+        <h3 className="text-2xl font-display font-bold text-black">{name}</h3>
+        <p className="font-semibold mb-4 text-black">{role}</p>
+        <p className="text-center text-black">{bio}</p>
       </div>
     </div>
   );
@@ -94,9 +109,9 @@ const Team: React.FC = () => {
     <section id="team" className="py-24 bg-white/50 backdrop-blur-sm">
       <div className="section-container">
         <div className="text-center mb-16">
-          <h2 className="heading-lg">Meet the Team<span className="text-internmate-purple">.</span></h2>
+          <h2 className="heading-lg">Meet the Chefs<span className="text-internmate-purple">.</span></h2>
           <p className="text-xl opacity-70 max-w-2xl mx-auto mt-4">
-            The cool humans behind InternMate
+            The awesome culinary team behind You'll Get It!
           </p>
         </div>
         
@@ -109,7 +124,7 @@ const Team: React.FC = () => {
               bio={member.bio}
               color={member.color}
               textColor={member.textColor}
-              emoji={member.emoji}
+              imagePath={member.imagePath}
               index={index}
             />
           ))}

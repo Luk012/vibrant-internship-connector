@@ -4,7 +4,7 @@ import { Send } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-internmate-purple text-white py-16">
+    <footer className="bg-internmate-purple text-black py-16">
       <div className="section-container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="space-y-4">
@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full py-3 px-4 rounded-full bg-white/20 placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="w-full py-3 px-4 rounded-full bg-black/20 placeholder-black/60 focus:outline-none focus:ring-2 focus:ring-black/50"
               />
               <button className="absolute right-1 top-1 bg-white text-internmate-purple p-2 rounded-full hover:bg-internmate-yellow transition-colors">
                 <Send size={18} />
@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         
-        <div className="mt-16 pt-8 border-t border-white/20 text-center">
+        <div className="mt-16 pt-8 border-t border-black/20 text-center">
           <p className="text-lg font-medium">Still scrolling? Just download the app already 👀</p>
           <div className="flex justify-center space-x-4 mt-4">
             <button className="bg-white text-internmate-purple font-semibold py-3 px-6 rounded-lg hover:bg-internmate-yellow transition-colors">
