@@ -1,99 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-// Method 1: Using the image tag approach
-// No import needed
 
-const Header: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+// Update this path to the location of your SVG logo file
+const LOGO_SVG_PATH = 'Untitled-3 copy.svg'; // Replace with your actual SVG path
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'py-2 glass' : 'py-4 bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          <a href="#" className="flex items-center">
-            {/* Using img tag to avoid TypeScript errors */}
-            <img 
-              src="public/Untitled-3 copy.svg" 
-              alt="InternMate Logo" 
-              className="h-16" 
-            />
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+        {/* Logo SVG instead of text */}
+        <a href="/" className="flex items-center">
+          <img 
+            src={LOGO_SVG_PATH} 
+            alt="InternMate Logo" 
+            className="h-16 w-auto" 
+          />
+        </a>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex space-x-8 items-center">
+          <a href="/" className="font-medium hover:text-yellit-primary transition-colors">
+            Home
           </a>
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8 items-center">
-            <a href="#how-it-works" className="font-medium hover:text-internmate-purple transition-colors">
-              How It Works
-            </a>
-            <a href="#stats" className="font-medium hover:text-internmate-purple transition-colors">
-              Stats
-            </a>
-            <a href="#team" className="font-medium hover:text-internmate-purple transition-colors">
-              Team
-            </a>
-            <a href="#testimonials" className="font-medium hover:text-internmate-purple transition-colors">
-              Testimonials
-            </a>
-            <button className="btn-primary">Get the App</button>
-          </nav>
-          {/* Mobile menu button */}
-          <button 
-            className="md:hidden text-internmate-purple" 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
+          <a href="/#how-it-works" className="font-medium hover:text-yellit-primary transition-colors">
+            How It Works
+          </a>
+          <a href="/#team" className="font-medium hover:text-yellit-primary transition-colors">
+            Team
+          </a>
+          <a href="/#roadmap" className="font-medium hover:text-yellit-primary transition-colors">
+            Roadmap
+          </a>
+          <a href="/" className="btn-primary">
+            Sign Up
+          </a>
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden p-2"
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
       {/* Mobile Navigation */}
-      {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 glass">
-          <div className="px-4 py-6 space-y-4">
-            <a 
-              href="#how-it-works" 
-              className="block py-2 font-medium hover:text-internmate-purple transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+      {isMenuOpen && (
+        <div className="md:hidden px-4 pt-2 pb-4 bg-white">
+          <nav className="flex flex-col space-y-4">
+            <a href="/" className="font-medium hover:text-yellit-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+              Home
+            </a>
+            <a href="/#how-it-works" className="font-medium hover:text-yellit-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
               How It Works
             </a>
-            <a 
-              href="#stats" 
-              className="block py-2 font-medium hover:text-internmate-purple transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Stats
-            </a>
-            <a 
-              href="#team" 
-              className="block py-2 font-medium hover:text-internmate-purple transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
+            <a href="/#team" className="font-medium hover:text-yellit-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
               Team
             </a>
-            <a 
-              href="#testimonials" 
-              className="block py-2 font-medium hover:text-internmate-purple transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Testimonials
+            <a href="/" className="btn-primary inline-block text-center" onClick={() => setIsMenuOpen(false)}>
+              Sign Up
             </a>
-            <button className="btn-primary w-full">Get the App</button>
-          </div>
+          </nav>
         </div>
       )}
     </header>

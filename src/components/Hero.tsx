@@ -42,7 +42,8 @@ const Hero: React.FC = () => {
             </h1>
             
             <p className="text-lg md:text-xl opacity-80 max-w-lg mx-auto lg:mx-0">
-              You'll Get It matches students with dream internships that actually fit their vibes. No more boring applications, just swipe right on your future.
+            You’ll Get It matches students with internships that actually fit their vibes. No more reading through long and heavy job descriptions,  just swipe right on your future.
+
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">

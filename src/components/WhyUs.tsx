@@ -34,7 +34,7 @@ const features = [
   },
   {
     title: "EU Focused",
-    description: "Specialized in European opportunities, we connect you with internships across the EU that match your career goals.",
+    description: "Focused on European opportunities, we connect you with internships across Europe that match your career goals.",
     color: "bg-internmate-light-teal",
     textColor: "text-internmate-teal",
     icon: "🇪🇺",
@@ -42,7 +42,7 @@ const features = [
   },
   {
     title: "Smart Matching System",
-    description: "Our AI-powered algorithm finds internships that match your skills, interests, and career aspirations with remarkable accuracy.",
+    description: "Our AI-powered algorithm accurately finds internships that match your skills, interests, and career aspirations.",
     color: "bg-internmate-light-orange",
     textColor: "text-internmate-orange",
     icon: "🔍",
@@ -50,7 +50,7 @@ const features = [
   },
   {
     title: "Entry Level Alternatives",
-    description: "Can't find an internship? We suggest entry-level opportunities that can help you build valuable experience.",
+    description: "We are especially looking for internships that are entry level in order to ensure accessibility to students with different levels of experience.",
     color: "bg-internmate-light-blue",
     textColor: "text-internmate-blue",
     icon: "🚀",

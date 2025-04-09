@@ -21,7 +21,7 @@ const PufferFish: React.FC<PufferFishProps> = ({
     sm: "w-16 h-16",
     md: "w-32 h-32",
     lg: "w-48 h-48",
-    xl: "w-64 h-64"
+    xl: "w-200 h-200"
   };
   
   // Track mouse position globally
@@ -76,7 +76,7 @@ const PufferFish: React.FC<PufferFishProps> = ({
         <img 
           src="public/puffer.svg" // Or "/images/pufferfish.svg" if in public folder
           alt="Pufferfish" 
-          className="w-full h-full scale-125"
+          className="w-full h-full scale-500"
         />
       </div>
     </div>

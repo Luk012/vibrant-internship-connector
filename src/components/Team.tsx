@@ -3,32 +3,32 @@ import React, { useEffect, useRef } from 'react';
 const team = [
   {
     name: 'Darmar',
-    role: 'Michi maus',
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    role: 'Creative Diva',
+    bio: "2nd Year Student at Erasmus University Rotterdam",
     color: 'bg-internmate-light-purple',
     textColor: 'text-internmate-purple',
     imagePath: 'darmar.png'
   },
   {
     name: 'Stefan',
-    role: 'Michi maus',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."',
+    role: 'Chronic Coder',
+    bio: '2nd Year Student at École Polytechnique Fédérale de Lausanne',
     color: 'bg-internmate-light-teal',
     textColor: 'text-internmate-teal',
     imagePath: 'stefan.png'
   },
   {
     name: 'Luk',
-    role: 'Michi maus',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    role: 'Dom Toretto (Drifting through departments)',
+    bio: 'High School Senior',
     color: 'bg-internmate-light-orange',
     textColor: 'text-internmate-orange',
     imagePath: 'luk.png'
   },
   {
     name: 'Sebi',
-    role: 'Michi maus',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    role: 'Container Captain (Navigating Docker Seas)',
+    bio: '2nd Year Student at University of Bucharest',
     color: 'bg-internmate-light-blue',
     textColor: 'text-internmate-blue',
     imagePath: 'sebi.png'
@@ -45,7 +45,8 @@ const TeamMember: React.FC<{
   index: number;
 }> = ({ name, role, bio, color, textColor, imagePath, index }) => {
   const memberRef = useRef<HTMLDivElement>(null);
-  
+  const [firstPartRole, secondPartRole] = role.includes('(') ? [role.split('(')[0].trim(), `(${role.split('(')[1]}`] : [role, ''];
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -66,13 +67,13 @@ const TeamMember: React.FC<{
       }
     };
   }, []);
-  
+
   return (
-    <div 
+    <div
       ref={memberRef}
       className="relative group overflow-hidden rounded-2xl opacity-0"
-      style={{ 
-        transitionDelay: `${index * 0.15}s`, 
+      style={{
+        transitionDelay: `${index * 0.15}s`,
         transitionDuration: '0.6s',
         height: 'h-full'
       }}
@@ -90,14 +91,17 @@ const TeamMember: React.FC<{
           }}
         />
       </div>
-      
+
       {/* Hover overlay with solid color background and information */}
-      <div 
+      <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center"
         style={{ backgroundColor: '#FAE959' }}
       >
         <h3 className="text-2xl font-display font-bold text-black">{name}</h3>
-        <p className="font-semibold mb-4 text-black">{role}</p>
+        <div className="font-semibold mb-4 text-black">
+          <div>{firstPartRole}</div>
+          {secondPartRole && <div>{secondPartRole}</div>}
+        </div>
         <p className="text-center text-black">{bio}</p>
       </div>
     </div>
@@ -114,7 +118,7 @@ const Team: React.FC = () => {
             The awesome culinary team behind You'll Get It!
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {team.map((member, index) => (
             <TeamMember

@@ -44,7 +44,7 @@ const PufferfishSymbolismSection: React.FC = () => {
                 maxDownward: 15,        // Allow more downward movement (pixels)
                 curveIntensity: 0.8    // Control how strongly eyes follow curve (0-1)
               }}
-              size="lg"
+              size="xl"
               eyeSensitivity={4}      // Reduced sensitivity for smaller movements
               className="cursor-pointer hover:scale-105 transition-transform duration-300"
             />
@@ -53,19 +53,25 @@ const PufferfishSymbolismSection: React.FC = () => {
           {/* Symbolism text */}
           <div className="space-y-6">
             <div className="card bg-internmate-light-purple shadow-internmate-purple/20 hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="heading-md text-internmate-purple mb-2">Adaptability</h3>
-              <p className="text-foreground/70">Just like pufferfish can adapt to threats by inflating themselves, our platform adapts to your unique skills and interests to find the perfect internship match.</p>
+              <h3 className="heading-md text-internmate-purple mb-2">Adaptability and Resilience</h3>
+              <p className="text-foreground/70">Just like pufferfish expand when threatened, students navigating the competitive internship landscape must adapt and show resilience, ready to face challenges and leverage opportunities.</p>
             </div>
             
             <div className="card bg-internmate-light-teal shadow-internmate-teal/20 hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="heading-md text-internmate-teal mb-2">Standing Out</h3>
-              <p className="text-foreground/70">Pufferfish are distinctive and memorable. We help you stand out in the competitive internship market with a platform designed exclusively for students.</p>
+              <h3 className="heading-md text-internmate-teal mb-2">Hidden Potential</h3>
+              <p className="text-foreground/70">While pufferfish may seem small and unassuming, they can transform dramatically when needed. Similarly, students often possess abilities that can shine under the right circumstances, and our platform helps uncover and nurture that potential.</p>
             </div>
             
             <div className="card bg-internmate-light-orange shadow-internmate-orange/20 hover:-translate-y-2 transition-transform duration-300">
-              <h3 className="heading-md text-internmate-orange mb-2">Protection</h3>
-              <p className="text-foreground/70">We provide a safe environment for students to explore internship opportunities, with verified companies and transparent application processes.</p>
+              <h3 className="heading-md text-internmate-orange mb-2">Uniqueness</h3>
+              <p className="text-foreground/70">Pufferfish are distinct in appearance and behavior, symbolizing how students need to stand out in a crowded field. With our matching system, students can use their unique strengths and apply for internships that align with their individual skills.</p>
             </div>
+
+            <div className="card bg-internmate-light-orange shadow-internmate-orange/20 hover:-translate-y-2 transition-transform duration-300">
+              <h3 className="heading-md text-internmate-orange mb-2">Careful Navigation</h3>
+              <p className="text-foreground/70">Just as pufferfish navigate their environment with care (or get all goofy and balloonish if they don’t), students must ensure an internship description aligns with their skills and goals. Our platform helps students save time by applying only to roles that are a perfect fit, maximizing their chances of passing the screening phase.</p>
+            </div>
+
           </div>
         </div>
       </div>

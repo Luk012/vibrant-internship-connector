@@ -6,8 +6,10 @@ import HowItWorks from '../components/HowItWorks';
 import WhyUs from '../components/WhyUs';
 import PufferfishSymbolismSection from '../components/PufferfishSymbolismSection';
 import Team from '../components/Team';
-import Testimonials from '../components/Testimonials';
+//import Testimonials from '../components/Testimonials';
 import Footer from '../components/Footer';
+import Roadmap from '../components/Roadmap';
+
 
 const Index = () => {
   // Smooth scrolling for anchor links
@@ -36,9 +38,9 @@ const Index = () => {
       <HowItWorks />
       <WhyUs />
       <PufferfishSymbolismSection />
-  
+
       <Team />
-      <Testimonials />
+      <Roadmap />
       <Footer />
     </div>
   );
