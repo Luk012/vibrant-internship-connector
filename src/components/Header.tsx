@@ -61,6 +61,9 @@ const Header = () => {
             <a href="/#team" className="font-medium hover:text-yellit-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
               Team
             </a>
+            <a href="/#roadmap" className="font-medium hover:text-yellit-primary transition-colors">
+            Roadmap
+          </a>
             <a href="/" className="btn-primary inline-block text-center" onClick={() => setIsMenuOpen(false)}>
               Sign Up
             </a>
