@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 // Update this path to the location of your SVG logo file
-const LOGO_SVG_PATH = 'Untitled-3 copy.svg'; // Replace with your actual SVG path
+const LOGO_SVG_PATH = 'Untitled-3_copy.svg'; // Replace with your actual SVG path
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

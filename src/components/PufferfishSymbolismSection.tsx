@@ -24,8 +24,8 @@ const PufferfishSymbolismSection: React.FC = () => {
           <div className="flex justify-center">
             <BoundedPufferfishEyeTracking
               bodyPath="bodygood.svg"
-              leftEyePath="left eye.svg"
-              rightEyePath="right eye.svg"
+              leftEyePath="left_eye.svg"
+              rightEyePath="right_eye.svg"
               leftEyePosition={{
                 left: '0%',
                 top: '0%',
