@@ -74,7 +74,7 @@ const PufferFish: React.FC<PufferFishProps> = ({
       >
         {/* Replace the custom-drawn pufferfish with your SVG */}
         <img 
-          src="public/puffer.svg" // Or "/images/pufferfish.svg" if in public folder
+          src="puffer.svg" // Or "/images/pufferfish.svg" if in public folder
           alt="Pufferfish" 
           className="w-full h-full scale-500"
         />

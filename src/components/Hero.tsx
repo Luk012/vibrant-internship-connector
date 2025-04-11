@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
             </div>
             
             <h1 className="heading-xl">
-              <span className="text-yellit-primary">Internships?</span> 
+              <span className="text-yellit-primary">Want An Internship?</span> 
               <br /> 
               You'll Get It!
             </h1>
