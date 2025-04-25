@@ -6,9 +6,7 @@ const PufferfishSymbolismSection: React.FC = () => {
     <section id="symbolism" className="py-24 relative">
       <div className="section-container">
         <div className="text-center mb-16">
-          <div className="inline-block px-4 py-2 bg-yellit-light text-yellit-dark rounded-full font-medium animate-pulse mb-4">
-            Our mascot
-          </div>
+        
           
           <h2 className="heading-lg">
             The <span className="text-internmate-purple">Pufferfish</span> Symbolism

@@ -119,16 +119,9 @@ const AIUsagePolicy = () => {
 
               <h2 className="text-2xl font-bold mt-8 mb-4">Contact Us</h2>
               <p className="mb-4">
-                If you have questions about our AI usage or wish to exercise your rights related to AI processing, please contact:
+                If you have questions about our AI usage or wish to exercise your rights related to AI processing, please contact: contact@youllgetit.eu
               </p>
-              <p className="mb-4">
-                AI Ethics Officer<br />
-                InternMate SRL<br />
-                [Your registered address]<br />
-                [City, Postal Code]<br />
-                Romania<br />
-                Email: ai@internmate.com
-              </p>
+            
 
               <p className="mb-4">
                 <strong>Last Updated:</strong> April 9, 2025

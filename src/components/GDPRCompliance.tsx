@@ -102,16 +102,9 @@ const GDPRCompliance = () => {
 
               <h2 className="text-2xl font-bold mt-8 mb-4">Contact Information</h2>
               <p className="mb-4">
-                If you have any questions about our GDPR compliance, please contact:
+                If you have any questions about our GDPR compliance, please contact: Email: contact@youllgetit.eu
               </p>
-              <p className="mb-4">
-                Data Protection Officer<br />
-                InternMate SRL<br />
-                [Your registered address]<br />
-                [City, Postal Code]<br />
-                Romania<br />
-                Email: dpo@internmate.com
-              </p>
+              
 
               <p className="mb-4">
                 <strong>Last Updated:</strong> April 9, 2025

@@ -112,7 +112,7 @@ const CookiePolicy = () => {
 
               <h2 className="text-2xl font-bold mt-8 mb-4">Contact Us</h2>
               <p className="mb-4">
-                If you have any questions about this Cookie Policy, please contact us at privacy@internmate.com.
+                If you have any questions about this Cookie Policy, please contact us at contact@youllgetit.eu.
               </p>
 
               <p className="mb-4">

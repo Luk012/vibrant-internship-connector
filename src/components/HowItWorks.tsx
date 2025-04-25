@@ -13,7 +13,7 @@ const steps = [
   },
   {
     title: "Swipe right on internships",
-    description: "Swipe right on internships that catch your eye. Our matchmaker finds opportunities that actually fit your vibe, our skills, and career goals.",
+    description: "Swipe right on internships that catch your eye. Our matchmaker finds opportunities that actually fit your vibe, your skills, and career goals.",
     emoji: "👉"
   },
   {
