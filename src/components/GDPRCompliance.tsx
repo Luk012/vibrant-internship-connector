@@ -66,12 +66,17 @@ const GDPRCompliance = () => {
                 Our Data Protection Officer can be contacted at:
               </p>
               <p className="mb-4">
-                [Name of DPO]<br />
-                InternMate SRL<br />
-                [Your registered address]<br />
-                [City, Postal Code]<br />
-                Romania<br />
-                Email: dpo@internmate.com
+              <ul className="space-y-2 text-gray-600">
+                <li>YOU'LL GET IT S.R.L.</li>
+                <li>Reg. No: J2025027781008</li>
+                <li>CUI: 51649682</li>
+                <li>EUID: ROONRC.J2025027781008</li>
+                <li>
+                  <a href="mailto:contact@youllgetit.eu" className="hover:text-yellit-primary transition-colors">
+                    contact@youllgetit.eu
+                  </a>
+                </li>
+              </ul>
               </p>
 
               <h2 className="text-2xl font-bold mt-8 mb-4">International Data Transfers</h2>
