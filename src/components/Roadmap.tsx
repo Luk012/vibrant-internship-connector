@@ -3,7 +3,7 @@ import { useIsMobile } from '../hooks/use-mobile'; // Using your existing hook
 
 // Both paths point to the same SVG for now - you can change this later
 const DESKTOP_SVG_PATH = 'Minimal_Blue_Pink_White_Roadmap_Graph.svg'; 
-const MOBILE_SVG_PATH = 'Minimal_Blue_Pink_White_Roadmap_Graph.svg';
+const MOBILE_SVG_PATH = 'phone.svg';
 
 const Roadmap = () => {
   const isMobile = useIsMobile();
