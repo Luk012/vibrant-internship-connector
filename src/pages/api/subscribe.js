@@ -4,8 +4,8 @@
 import { google } from 'googleapis';
 
 // Configuration for Google Sheets
-const SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID';  // Replace with your actual spreadsheet ID
-const SHEET_NAME = 'Subscribers';
+const SPREADSHEET_ID = 'https://docs.google.com/spreadsheets/d/1eC-saRwVd13dmTfiEADgXnoH-K6zUjJyzodZSTjq0n8/edit?usp=sharing';  // Replace with your actual spreadsheet ID
+const SHEET_NAME = 'lol';
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 
 export default async function handler(req, res) {

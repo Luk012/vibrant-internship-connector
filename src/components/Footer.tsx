@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Send } from 'lucide-react';
-import { Link } from 'react-router-dom';  // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 
 const FooterWithButtons = () => {
   const [showCookieBanner, setShowCookieBanner] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+
+  // Google Apps Script URL for newsletter subscription
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPJtAefgTMeEmQYm4WEoMiHCJzfktRfi3MAzW9awuoBSHMRyUbd8dCFyDW7R3qeMaC/exec';
 
   useEffect(() => {
     // Check if the user has already accepted cookies
@@ -43,21 +46,23 @@ const FooterWithButtons = () => {
     }
 
     setIsSubmitting(true);
+    
     try {
-      const response = await fetch('/api/subscribe', {
+      // Create form data to send
+      const formData = new FormData();
+      formData.append('email', email);
+      
+      // Send data to Google Apps Script
+      await fetch(SCRIPT_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
+        body: formData,
+        mode: 'no-cors' // Required for Google Apps Script
       });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setEmail('');
-      } else {
-        setSubmitStatus('error');
-      }
+      
+      // Since we're using no-cors, we can't read the response
+      // Just assume it worked if no error was thrown
+      setSubmitStatus('success');
+      setEmail('');
     } catch (error) {
       console.error('Error submitting email:', error);
       setSubmitStatus('error');
@@ -137,7 +142,6 @@ const FooterWithButtons = () => {
             <div className="space-y-4">
               <h4 className="text-xl font-bold text-gray-800">Legal Documents</h4>
               <div className="flex flex-col space-y-3">
-                {/* Updated to use proper Link component with to= instead of href= */}
                 <Link to="/terms" className="inline-block">
                   <button className="w-full bg-white border border-gray-300 text-yellit-primary font-medium rounded-lg py-2 px-4 hover:bg-gray-50 hover:border-yellit-primary transition-colors">
                     Terms of Service
@@ -268,9 +272,6 @@ const FooterWithButtons = () => {
               <p><span className="font-medium">Legal Form:</span> Limited Liability Company</p>
               <p><span className="font-medium">Date of Last Trade Register Entry:</span> 22.04.2025</p>
               <p><span className="font-medium">Company Duration:</span> Unlimited</p>
-              <p><span className="font-medium">Subscribed Share Capital:</span> 2000 LEI, fully paid</p>
-              <p><span className="font-medium">Number of Social Parts:</span> 2000</p>
-              <p><span className="font-medium">Value of One Social Part:</span> 1 LEI</p>
             </div>
           </div>
 

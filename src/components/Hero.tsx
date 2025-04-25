@@ -10,6 +10,9 @@ const EmployerContactModal = ({ isOpen, onClose }) => {
   const [submitStatus, setSubmitStatus] = useState(null);
   const modalRef = useRef(null);
 
+  // Google Apps Script URL specifically for employer contacts
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyvdmbGD2FBlG6MiDVCffrS4y29vTBZXlRPcnKEeX2ozcS8XuILv7hByAKhj2_32-s/exec';
+
   // Handle click outside to close
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -39,27 +42,31 @@ const EmployerContactModal = ({ isOpen, onClose }) => {
     }
 
     setIsSubmitting(true);
+    
     try {
-      const response = await fetch('/api/contact-employer', {
+      // Create form data with correct parameter names
+      const formData = new FormData();
+      formData.append('email', email);
+      formData.append('msg', message); // Using 'msg' instead of 'message' as specified
+      
+      // Send data to Google Apps Script
+      await fetch(SCRIPT_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, message }),
+        body: formData,
+        mode: 'no-cors' // Required for Google Apps Script
       });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setEmail('');
-        setMessage('');
-        // Close modal after 3 seconds on success
-        setTimeout(() => {
-          onClose();
-          setSubmitStatus(null);
-        }, 3000);
-      } else {
-        setSubmitStatus('error');
-      }
+      
+      // Since we're using no-cors, we can't read the response
+      // Just assume it worked if no error was thrown
+      setSubmitStatus('success');
+      setEmail('');
+      setMessage('');
+      
+      // Close modal after 3 seconds on success
+      setTimeout(() => {
+        onClose();
+        setSubmitStatus(null);
+      }, 3000);
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitStatus('error');
@@ -152,8 +159,8 @@ const EmployerContactModal = ({ isOpen, onClose }) => {
   );
 };
 
-const Hero: React.FC = () => {
-  const phoneRef = useRef<HTMLDivElement>(null);
+const Hero = () => {
+  const phoneRef = useRef(null);
   const [showEmployerModal, setShowEmployerModal] = useState(false);
   
   useEffect(() => {

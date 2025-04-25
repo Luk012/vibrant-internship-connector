@@ -4,9 +4,9 @@ import { useIsMobile } from '@/hooks/use-mobile';
 const team = [
   {
     name: 'Darmar',
-    role: 'Creative Diva',
+    role: 'Dot Connector',
     bio: "2nd Year Student at Erasmus University Rotterdam",
-    color: 'bg-internmate-light-purple',
+    color: 'bg-internmate-light-pur`ple',
     textColor: 'text-internmate-purple',
     imagePath: 'darmar.png'
   },
