@@ -14,7 +14,7 @@ const Header = () => {
         <a href="/" className="flex items-center">
           <img 
             src={LOGO_SVG_PATH} 
-            alt="InternMate Logo" 
+            alt="You'll Get It!" 
             className="h-16 w-auto" 
           />
         </a>
