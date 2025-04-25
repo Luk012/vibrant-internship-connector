@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Send } from 'lucide-react';
+import { Link } from 'react-router-dom';  // Import Link from react-router-dom
 
 const FooterWithButtons = () => {
   const [showCookieBanner, setShowCookieBanner] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<null | 'success' | 'error'>(null);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   useEffect(() => {
     // Check if the user has already accepted cookies
@@ -25,13 +26,13 @@ const FooterWithButtons = () => {
     setShowCookieBanner(false);
   };
 
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleEmailChange = (e) => {
     setEmail(e.target.value);
     // Reset submission status when user changes input
     if (submitStatus) setSubmitStatus(null);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Simple email validation
@@ -74,13 +75,13 @@ const FooterWithButtons = () => {
             <p className="mb-1 font-medium">We use cookies to improve your experience.</p>
             <p>
               By continuing to use our site, you consent to our use of cookies in accordance with our{' '}
-              <a href="/terms" className="text-yellit-primary hover:underline">
+              <Link to="/terms" className="text-yellit-primary hover:underline">
                 Privacy Policy
-              </a>{' '}
+              </Link>{' '}
               and{' '}
-              <a href="/cookie-policy" className="text-yellit-primary hover:underline">
+              <Link to="/cookie-policy" className="text-yellit-primary hover:underline">
                 Cookie Policy
-              </a>.
+              </Link>.
             </p>
           </div>
           <div className="flex space-x-3">
@@ -110,7 +111,6 @@ const FooterWithButtons = () => {
                 Matching students with internships that actually make sense for their future.
               </p>
               <div className="flex space-x-4 pt-2">
-                {/* Social media icons */}
                 <a href="#" className="text-gray-500 hover:text-yellit-primary transition-colors">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd"></path>
@@ -137,26 +137,27 @@ const FooterWithButtons = () => {
             <div className="space-y-4">
               <h4 className="text-xl font-bold text-gray-800">Legal Documents</h4>
               <div className="flex flex-col space-y-3">
-                <a href="/terms" className="inline-block">
+                {/* Updated to use proper Link component with to= instead of href= */}
+                <Link to="/terms" className="inline-block">
                   <button className="w-full bg-white border border-gray-300 text-yellit-primary font-medium rounded-lg py-2 px-4 hover:bg-gray-50 hover:border-yellit-primary transition-colors">
                     Terms of Service
                   </button>
-                </a>
-                <a href="/cookie-policy" className="inline-block">
+                </Link>
+                <Link to="/cookie-policy" className="inline-block">
                   <button className="w-full bg-white border border-gray-300 text-yellit-primary font-medium rounded-lg py-2 px-4 hover:bg-gray-50 hover:border-yellit-primary transition-colors">
                     Cookie Policy
                   </button>
-                </a>
-                <a href="/gdpr" className="inline-block">
+                </Link>
+                <Link to="/gdpr" className="inline-block">
                   <button className="w-full bg-white border border-gray-300 text-yellit-primary font-medium rounded-lg py-2 px-4 hover:bg-gray-50 hover:border-yellit-primary transition-colors">
                     GDPR Compliance
                   </button>
-                </a>
-                <a href="/ai-usage" className="inline-block">
+                </Link>
+                <Link to="/ai-usage" className="inline-block">
                   <button className="w-full bg-white border border-gray-300 text-yellit-primary font-medium rounded-lg py-2 px-4 hover:bg-gray-50 hover:border-yellit-primary transition-colors">
                     AI Usage Policy
                   </button>
-                </a>
+                </Link>
               </div>
             </div>
 
