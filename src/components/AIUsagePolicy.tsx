@@ -13,7 +13,7 @@ const AIUsagePolicy = () => {
             <div className="prose max-w-none">
               <h2 className="text-2xl font-bold mt-8 mb-4">Introduction</h2>
               <p className="mb-4">
-                At InternMate, we use artificial intelligence (AI) technologies to enhance our services. This policy explains how we use AI, the data involved, and your rights related to AI-assisted processing.
+                At you'll get it, we use artificial intelligence (AI) technologies to enhance our services. This policy explains how we use AI, the data involved, and your rights related to AI-assisted processing.
               </p>
 
               <h2 className="text-2xl font-bold mt-8 mb-4">How We Use AI</h2>
@@ -82,7 +82,7 @@ const AIUsagePolicy = () => {
                   <strong>Safeguards:</strong> We implement suitable measures to safeguard your rights, freedoms, and legitimate interests. This includes ensuring that our matching algorithms don't systematically disadvantage any particular groups.
                 </li>
                 <li className="mb-2">
-                  <strong>Human Intervention:</strong> You have the right to obtain human intervention, express your point of view, and contest any automated decisions by contacting us at ai@internmate.com. If you believe our AI system has made an error in its recommendations, our team is available to review and address your concerns.
+                  <strong>Human Intervention:</strong> You have the right to obtain human intervention, express your point of view, and contest any automated decisions by contacting us at contact@youllgetit.eu. If you believe our AI system has made an error in its recommendations, our team is available to review and address your concerns.
                 </li>
               </ol>
 

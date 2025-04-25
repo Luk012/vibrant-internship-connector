@@ -13,7 +13,7 @@ const TermsOfService = () => {
             <div className="prose max-w-none">
               <h2 className="text-2xl font-bold mt-8 mb-4">Introduction</h2>
               <p className="mb-4">
-                These Terms of Service ("Terms") govern your access to and use of InternMate's website and mobile application (collectively, the "Platform"). Please read these Terms carefully before using our Platform.
+                These Terms of Service ("Terms") govern your access to and use of you'll get it's website and mobile application (collectively, the "Platform"). Please read these Terms carefully before using our Platform.
               </p>
 
               <h2 className="text-2xl font-bold mt-8 mb-4">Acceptance of Terms</h2>
@@ -57,7 +57,7 @@ const TermsOfService = () => {
 
               <h2 className="text-2xl font-bold mt-8 mb-4">Intellectual Property Rights</h2>
               <p className="mb-4">
-                The Platform and its content, features, and functionality are owned by InternMate and are protected by copyright, trademark, and other intellectual property laws.
+                The Platform and its content, features, and functionality are owned by you'll get it and are protected by copyright, trademark, and other intellectual property laws.
               </p>
 
               <h2 className="text-2xl font-bold mt-8 mb-4">User Content</h2>
@@ -88,12 +88,12 @@ const TermsOfService = () => {
 
               <h2 className="text-2xl font-bold mt-8 mb-4">Limitation of Liability</h2>
               <p className="mb-4 uppercase">
-                TO THE FULLEST EXTENT PERMITTED BY LAW, INTERNMATE SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATING TO YOUR USE OF THE PLATFORM.
+                TO THE FULLEST EXTENT PERMITTED BY LAW, you'll get it SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATING TO YOUR USE OF THE PLATFORM.
               </p>
 
               <h2 className="text-2xl font-bold mt-8 mb-4">Indemnification</h2>
               <p className="mb-4">
-                You agree to indemnify and hold harmless InternMate and its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses arising out of or relating to your use of the Platform or violation of these Terms.
+                You agree to indemnify and hold harmless you'll get it and its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses arising out of or relating to your use of the Platform or violation of these Terms.
               </p>
 
               <h2 className="text-2xl font-bold mt-8 mb-4">Governing Law</h2>
@@ -123,7 +123,7 @@ const TermsOfService = () => {
 
               <h2 className="text-2xl font-bold mt-8 mb-4">Entire Agreement</h2>
               <p className="mb-4">
-                These Terms constitute the entire agreement between you and InternMate regarding the Platform.
+                These Terms constitute the entire agreement between you and you'll get it regarding the Platform.
               </p>
 
               <h2 className="text-2xl font-bold mt-8 mb-4">Contact Us</h2>

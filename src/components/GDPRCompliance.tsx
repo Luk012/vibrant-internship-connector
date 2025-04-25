@@ -13,7 +13,7 @@ const GDPRCompliance = () => {
             <div className="prose max-w-none">
               <h2 className="text-2xl font-bold mt-8 mb-4">Our Commitment to GDPR Compliance</h2>
               <p className="mb-4">
-                At InternMate, we are committed to ensuring the privacy and protection of your personal data in compliance with the General Data Protection Regulation (GDPR) and relevant Romanian data protection laws.
+                At you'll get it, we are committed to ensuring the privacy and protection of your personal data in compliance with the General Data Protection Regulation (GDPR) and relevant Romanian data protection laws.
               </p>
 
               <h2 className="text-2xl font-bold mt-8 mb-4">Data Protection Principles</h2>
@@ -58,12 +58,12 @@ const GDPRCompliance = () => {
                 <li className="mb-2"><strong>Rights Related to Automated Decision Making and Profiling:</strong> Not be subject to decisions based solely on automated processing that produce legal effects.</li>
               </ul>
               <p className="mb-4">
-                To exercise these rights, please contact our Data Protection Officer at dpo@internmate.com.
+                To exercise these rights, please contact us at contact@youllgetit.eu.
               </p>
 
               <h2 className="text-2xl font-bold mt-8 mb-4">Data Protection Officer</h2>
               <p className="mb-4">
-                Our Data Protection Officer can be contacted at:
+                Contact us at:
               </p>
               <p className="mb-4">
               <ul className="space-y-2 text-gray-600">

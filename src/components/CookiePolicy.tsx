@@ -13,7 +13,7 @@ const CookiePolicy = () => {
             <div className="prose max-w-none">
               <h2 className="text-2xl font-bold mt-8 mb-4">Introduction</h2>
               <p className="mb-4">
-                This Cookie Policy explains how InternMate ("we," "our," or "us") uses cookies and similar technologies on our website and mobile application (collectively, the "Platform").
+                This Cookie Policy explains how you'll get it ("we," "our," or "us") uses cookies and similar technologies on our website and mobile application (collectively, the "Platform").
               </p>
 
               <h2 className="text-2xl font-bold mt-8 mb-4">What Are Cookies?</h2>
