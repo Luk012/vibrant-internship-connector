@@ -1,12 +1,157 @@
-import React, { useState, useEffect } from 'react';
-import { Send } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Send, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+// Beta Tester Modal Component
+const BetaTesterModal = ({ isOpen, onClose }) => {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+  const modalRef = useRef(null);
+
+  // Google Apps Script URL for newsletter subscription
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPJtAefgTMeEmQYm4WEoMiHCJzfktRfi3MAzW9awuoBSHMRyUbd8dCFyDW7R3qeMaC/exec';
+
+  // Handle click outside to close
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen, onClose]);
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Simple email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      // Create form data with correct parameter names
+      const formData = new FormData();
+      formData.append('email', email);
+      formData.append('type', 'beta'); // Specify this is a beta sign-up
+      
+      // Send data to Google Apps Script
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors' // Required for Google Apps Script
+      });
+      
+      // Since we're using no-cors, we can't read the response
+      // Just assume it worked if no error was thrown
+      setSubmitStatus('success');
+      setEmail('');
+      
+      // Close modal after 3 seconds on success
+      setTimeout(() => {
+        onClose();
+        setSubmitStatus(null);
+      }, 3000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+      <div 
+        ref={modalRef}
+        className="bg-white rounded-2xl w-full max-w-md transform transition-all"
+      >
+        {/* Modal header */}
+        <div className="flex justify-between items-center p-6 border-b">
+          <h3 className="text-2xl font-bold text-yellit-primary">Join Our Beta Program</h3>
+          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+            <X size={24} />
+          </button>
+        </div>
+
+        {/* Modal body */}
+        <div className="p-6">
+          {submitStatus === 'success' ? (
+            <div className="text-center py-8">
+              <div className="text-5xl mb-4">🎉</div>
+              <h4 className="text-xl font-bold text-gray-800 mb-2">You're In!</h4>
+              <p className="text-gray-600">Thanks for signing up! We'll be in touch soon.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <div className="mb-6">
+                <label htmlFor="beta-email" className="block text-sm font-medium text-gray-700 mb-1">
+                  Your Email Address
+                </label>
+                <input
+                  id="beta-email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@example.com"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellit-primary focus:border-transparent"
+                  required
+                />
+                <p className="mt-2 text-sm text-gray-500">
+                  Be first to try Yellit and shape the future of internship matching!
+                </p>
+              </div>
+              
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-yellit-primary text-black font-semibold py-3 px-6 rounded-lg flex items-center justify-center transition-all hover:bg-yellit-secondary focus:outline-none focus:ring-2 focus:ring-yellit-accent focus:ring-offset-2 disabled:opacity-70"
+              >
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Signing up...
+                  </>
+                ) : "Join the Beta"}
+              </button>
+              
+              {submitStatus === 'error' && (
+                <p className="mt-3 text-sm text-red-600 text-center">
+                  Something went wrong. Please try again later.
+                </p>
+              )}
+            </form>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const FooterWithButtons = () => {
   const [showCookieBanner, setShowCookieBanner] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [showBetaModal, setShowBetaModal] = useState(false); // State for beta modal
 
   // Google Apps Script URL for newsletter subscription
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPJtAefgTMeEmQYm4WEoMiHCJzfktRfi3MAzW9awuoBSHMRyUbd8dCFyDW7R3qeMaC/exec';
@@ -51,6 +196,7 @@ const FooterWithButtons = () => {
       // Create form data to send
       const formData = new FormData();
       formData.append('email', email);
+      formData.append('type', 'newsletter'); // Specify this is a newsletter sign-up
       
       // Send data to Google Apps Script
       await fetch(SCRIPT_URL, {
@@ -223,14 +369,15 @@ const FooterWithButtons = () => {
             </div>
           </div>
 
+          {/* Beta tester button section - reverted to popup modal approach */}
           <div className="mt-16 pt-8 border-t border-gray-200 text-center">
-            <p className="text-lg font-medium text-gray-700">Still scrolling? Just download the app already 👀</p>
-            <div className="flex justify-center space-x-4 mt-4">
-              <button className="bg-yellit-primary text-white font-semibold py-3 px-6 rounded-lg hover:bg-yellit-secondary transition-colors">
-                App Store
-              </button>
-              <button className="bg-yellit-secondary text-white font-semibold py-3 px-6 rounded-lg hover:bg-yellit-primary transition-colors">
-                Google Play
+            <p className="text-lg font-medium text-gray-700">Still scrolling? Join our beta program and shape the future!</p>
+            <div className="flex justify-center mt-4">
+              <button 
+                onClick={() => setShowBetaModal(true)} 
+                className="font-sans bg-custom-black text-yellit-primary py-3 px-8 rounded-lg font-semibold text-lg transition-all hover:bg-gray-800 animate-pulse-subtle"
+              >
+                Become a BETA TESTER
               </button>
             </div>
           </div>
@@ -280,6 +427,9 @@ const FooterWithButtons = () => {
           </p>
         </div>
       </footer>
+
+      {/* Beta Tester Modal */}
+      <BetaTesterModal isOpen={showBetaModal} onClose={() => setShowBetaModal(false)} />
     </>
   );
 };

@@ -56,7 +56,7 @@ const StepCard = ({ step, index }) => {
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
         transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
-        transitionDelay: `${index * 0.2}s`
+        transitionDelay: `${index * 0.1}s`
       }}
     >
       <div className="relative mb-6">
@@ -66,7 +66,7 @@ const StepCard = ({ step, index }) => {
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'scale(1)' : 'scale(0)',
             transition: 'opacity 0.4s ease-out, transform 0.4s ease-out',
-            transitionDelay: `${index * 0.2 + 0.2}s`
+            transitionDelay: `${index * 0.1 + 0.05}s`
           }}
         >
           {index + 1}
@@ -77,7 +77,7 @@ const StepCard = ({ step, index }) => {
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(-20px)',
             transition: 'opacity 0.4s ease-out, transform 0.4s ease-out',
-            transitionDelay: `${index * 0.2 + 0.3}s`
+            transitionDelay: `${index * 0.15 + 0.05}s`
           }}
         >
           {step.emoji}
@@ -88,7 +88,7 @@ const StepCard = ({ step, index }) => {
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(15px)',
             transition: 'opacity 0.4s ease-out, transform 0.4s ease-out',
-            transitionDelay: `${index * 0.2 + 0.4}s`
+            transitionDelay: `${index * 0.2 + 0.05}s`
           }}
         >
           {step.title}
@@ -99,7 +99,7 @@ const StepCard = ({ step, index }) => {
         style={{
           opacity: isVisible ? 1 : 0,
           transition: 'opacity 0.4s ease-out',
-          transitionDelay: `${index * 0.2 + 0.5}s`
+          transitionDelay: `${index * 0.2 + 0.05}s`
         }}
       >
         {step.description}

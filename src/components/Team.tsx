@@ -6,9 +6,10 @@ const team = [
     name: 'Darmar',
     role: 'Dot Connector',
     bio: "2nd Year Student at Erasmus University Rotterdam",
-    color: 'bg-internmate-light-pur`ple',
+    color: 'bg-internmate-light-purple',
     textColor: 'text-internmate-purple',
-    imagePath: 'darmar.png'
+    imagePath: 'darmar.png',
+    linkedinUrl: 'https://www.linkedin.com/in/dmanghel/' // Replace with actual LinkedIn URL
   },
   {
     name: 'Stefan',
@@ -16,7 +17,8 @@ const team = [
     bio: '2nd Year Student at École Polytechnique Fédérale de Lausanne',
     color: 'bg-internmate-light-teal',
     textColor: 'text-internmate-teal',
-    imagePath: 'stefan.png'
+    imagePath: 'stefan.png',
+    linkedinUrl: 'https://www.linkedin.com/in/staga/' // Replace with actual LinkedIn URL
   },
   {
     name: 'Luk',
@@ -24,7 +26,8 @@ const team = [
     bio: 'High School Senior',
     color: 'bg-internmate-light-orange',
     textColor: 'text-internmate-orange',
-    imagePath: 'luk.png'
+    imagePath: 'luk.png',
+    linkedinUrl: 'https://www.linkedin.com/in/david-luca-moșu-b48a80274/' // Replace with actual LinkedIn URL
   },
   {
     name: 'Sebi',
@@ -32,7 +35,8 @@ const team = [
     bio: '2nd Year Student at University of Bucharest',
     color: 'bg-internmate-light-blue',
     textColor: 'text-internmate-blue',
-    imagePath: 'sebi.png'
+    imagePath: 'sebi.png',
+    linkedinUrl: 'https://www.linkedin.com/in/andrei-sebastian-duță-061698277/' // Replace with actual LinkedIn URL
   }
 ];
 
@@ -43,8 +47,9 @@ const TeamMember: React.FC<{
   color: string;
   textColor: string;
   imagePath: string;
+  linkedinUrl: string;
   index: number;
-}> = ({ name, role, bio, color, textColor, imagePath, index }) => {
+}> = ({ name, role, bio, color, textColor, imagePath, linkedinUrl, index }) => {
   const memberRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
   const [isActive, setIsActive] = useState(false);
@@ -94,6 +99,12 @@ const TeamMember: React.FC<{
     };
   }, [isMobile]);
 
+  // Handle LinkedIn button click without triggering the parent click handler
+  const handleLinkedInClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent triggering the parent onClick
+    window.open(linkedinUrl, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div
       ref={memberRef}
@@ -133,7 +144,25 @@ const TeamMember: React.FC<{
           <div>{firstPartRole}</div>
           {secondPartRole && <div>{secondPartRole}</div>}
         </div>
-        <p className="text-center text-black">{bio}</p>
+        <p className="text-center text-black mb-6">{bio}</p>
+        
+        {/* LinkedIn Button */}
+        <button 
+          onClick={handleLinkedInClick}
+          className="mt-4 bg-black text-yellit-primary py-2 px-4 rounded-lg font-medium flex items-center transition-all hover:bg-gray-800"
+        >
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="16" 
+            height="16" 
+            viewBox="0 0 24 24" 
+            fill="currentColor" 
+            className="mr-2"
+          >
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+          See LinkedIn
+        </button>
       </div>
       
       {/* Mobile indicator that this is tappable (shown only on mobile when not active) */}
@@ -157,7 +186,7 @@ const Team: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="heading-lg">Meet the Chefs<span className="text-internmate-purple">.</span></h2>
           <p className="text-xl opacity-70 max-w-2xl mx-auto mt-4">
-            The ones who are cooking you’ll get it!
+            The ones who are cooking you'll get it!
           </p>
         </div>
         
@@ -171,6 +200,7 @@ const Team: React.FC = () => {
               color={member.color}
               textColor={member.textColor}
               imagePath={member.imagePath}
+              linkedinUrl={member.linkedinUrl}
               index={index}
             />
           ))}
