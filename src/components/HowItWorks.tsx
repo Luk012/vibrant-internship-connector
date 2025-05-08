@@ -307,13 +307,7 @@ const HowItWorks = () => {
         </div>
         
         <div className="text-center mt-16">
-          <button
-            ref={buttonRef}
-            className="btn-primary opacity-0 animate-fade-in"
-            style={{ animationDelay: '1.5s' }}
-          >
-            Get Started Now
-          </button>
+        
         </div>
       </div>
     </section>

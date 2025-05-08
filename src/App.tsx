@@ -12,6 +12,7 @@ import CookiePolicy from './components/CookiePolicy';
 import GDPRCompliance from './components/GDPRCompliance';
 import AIUsagePolicy from './components/AIUsagePolicy';
 import Roadmap from './components/Roadmap';
+import Mission from './components/Mission';
 
 const queryClient = new QueryClient();
 

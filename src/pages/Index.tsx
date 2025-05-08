@@ -9,6 +9,7 @@ import Team from '../components/Team';
 //import Testimonials from '../components/Testimonials';
 import Footer from '../components/Footer';
 import Roadmap from '../components/Roadmap';
+import Mission from '../components/Mission';
 
 
 const Index = () => {
@@ -35,6 +36,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Header />
       <Hero />
+      <Mission />
       <HowItWorks />
       <WhyUs />
       <PufferfishSymbolismSection />

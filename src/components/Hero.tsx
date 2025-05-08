@@ -143,7 +143,7 @@ const BetaTesterModal = ({ isOpen, onClose }) => {
                   required
                 />
                 <p className="mt-2.5 text-sm text-gray-500">
-                  Be first to try Yellit and shape the future of internship matching!
+                  Be first to try you'll get it and shape the future of internship matching!
                 </p>
               </div>
               <button
@@ -336,7 +336,7 @@ const EmployerContactModal = ({ isOpen, onClose }) => {
                   required
                 />
                 <p className="mt-2.5 text-sm text-gray-500">
-                  Let's connect to discuss how Yellit can help you find top intern talent.
+                  Let's connect to discuss how you'll get it can help you find top intern talent.
                 </p>
               </div>
               <button
