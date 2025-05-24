@@ -280,11 +280,14 @@ const FooterWithButtons = () => {
       </div>
     </div>
 
-
-
             <div className="space-y-4">
               <h4 className="text-xl font-bold text-gray-800">Legal Documents</h4>
               <div className="flex flex-col space-y-3">
+                <a href="/contact" className="inline-block">
+                  <button className="w-full bg-yellit-primary text-custom-black font-medium rounded-lg py-2 px-4 hover:bg-yellit-secondary transition-colors">
+                    Contact & Support
+                  </button>
+                </a>
                 <Link to="/terms" className="inline-block">
                   <button className="w-full bg-white border border-gray-300 text-yellit-primary font-medium rounded-lg py-2 px-4 hover:bg-gray-50 hover:border-yellit-primary transition-colors">
                     Terms of Service
@@ -381,22 +384,15 @@ const FooterWithButtons = () => {
 
           {/* Legal links section as per Romanian law requirements */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="rounded-lg border border-gray-200 p-4 bg-gray-50">
-              <h5 className="font-bold text-gray-800 mb-2">ALTERNATIVE DISPUTE RESOLUTION</h5>
-              <a href="https://reclamatiisal.anpc.ro" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-white hover:bg-gray-100 border border-gray-300 rounded-md p-3 transition-colors">
-                <div className="flex items-center">
-                  <img src="/images/anpc-logo.png" alt="ANPC Logo" className="h-8 mr-3" onError={(e) => e.currentTarget.style.display = 'none'} />
-                  <span className="text-yellit-primary font-medium">DETAILS</span>
-                </div>
+            <div>
+              <a href="https://reclamatiisal.anpc.ro" target="_blank" rel="noopener noreferrer" className="block transition-opacity hover:opacity-80">
+                <img src="/anpc-sal.svg" alt="ANPC SAL Logo" className="w-full h-auto" onError={(e) => e.currentTarget.style.display = 'none'} />
               </a>
             </div>
 
-            <div className="rounded-lg border border-gray-200 p-4 bg-gray-50">
-              <h5 className="font-bold text-gray-800 mb-2">ONLINE DISPUTE RESOLUTION</h5>
-              <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home.chooseLanguage" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-white hover:bg-gray-100 border border-gray-300 rounded-md p-3 transition-colors">
-                <div className="flex items-center">
-                  <span className="text-yellit-primary font-medium">DETAILS</span>
-                </div>
+            <div>
+              <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home.chooseLanguage" target="_blank" rel="noopener noreferrer" className="block transition-opacity hover:opacity-80">
+                <img src="/anpc-sol.svg" alt="ANPC SOL Logo" className="w-full h-auto" onError={(e) => e.currentTarget.style.display = 'none'} />
               </a>
             </div>
           </div>
