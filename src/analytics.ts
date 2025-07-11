@@ -1,8 +1,17 @@
-import { gtag } from 'gtag';
+declare global {
+    interface Window {
+        gtag: (command: any, targetId: any, config?: any) => void;
+    }
+}
 
-export const GA_MEASUREMENT_ID: string = 'G-4EQBNSBCH7';
+const gtag = (command: any, targetId: any, config?: any): void => {
+    if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag(command, targetId, config);
+    }
+};
 
-// Initialize GA
+export const GA_MEASUREMENT_ID = 'G-4EQBNSBCH7';
+
 export const initGA = (): void => {
     gtag('config', GA_MEASUREMENT_ID, {
         page_title: document.title,
@@ -10,23 +19,8 @@ export const initGA = (): void => {
     });
 };
 
-// Track page views
 export const trackPageView = (path: string): void => {
     gtag('config', GA_MEASUREMENT_ID, {
         page_path: path,
-    });
-};
-
-// Track events
-export const trackEvent = (
-    action: string,
-    category: string,
-    label?: string,
-    value?: number
-): void => {
-    gtag('event', action, {
-        event_category: category,
-        event_label: label,
-        value: value,
     });
 };
