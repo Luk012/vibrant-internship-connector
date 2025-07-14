@@ -15,11 +15,8 @@ import AIUsagePolicy from './components/AIUsagePolicy';
 import Roadmap from './components/Roadmap';
 import NewsletterPage from "./components/NewsletterPage.tsx";
 import Mission from './components/Mission';
-<<<<<<< HEAD
 import ArticlePage from "./components/ArticlePage.tsx";
-=======
-import { initGA, trackPageView } from "./analytics";
->>>>>>> 117b2f4b771f5299a9e1509878de099f4bb851a1
+import { initGA, trackPageView } from "./analytics.ts";
 
 const queryClient = new QueryClient();
 
@@ -47,12 +44,9 @@ function AppRoutes() {
           <Route path="/gdpr" element={<GDPRCompliance />} />
           <Route path="/ai-usage" element={<AIUsagePolicy />} />
           <Route path="/roadmap" element={<Roadmap />} />
-<<<<<<< HEAD
           <Route path="/newsletter" element={<NewsletterPage />} />
           <Route path="/newsletter/:id" element={<ArticlePage />} />
-=======
           <Route path="/mission" element={<Mission />} />
->>>>>>> 117b2f4b771f5299a9e1509878de099f4bb851a1
           <Route path="*" element={<NotFound />} />
         </Routes>
       </TrackingWrapper>
