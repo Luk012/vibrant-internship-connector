@@ -1,10 +1,58 @@
+/* --- FONT IMPORT --- */
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;600;700;800&display=swap');
-
+/* --- TAILWIND DIRECTIVES --- */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
+/* --- KEYFRAME ANIMATIONS --- */
+/* Placed at the top level, outside of any layer */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* New, more visible animation for the title */
+@keyframes title-pop-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.05);
+  }
+  80% {
+    transform: translateY(5px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+@keyframes modal-fade-in-scale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* --- BASE LAYER & THEME VARIABLES --- */
 @layer base {
   :root {
     --background: 50 100% 97%;
@@ -52,7 +100,10 @@
   }
 }
 
+
+/* --- COMPONENTS LAYER --- */
 @layer components {
+  /* Your Existing Components */
   .glass {
     @apply bg-white/60 backdrop-blur-lg border border-white/30 shadow-lg;
   }
@@ -117,5 +168,172 @@
   .bubble-accent::after {
     @apply bg-yellit-accent;
   }
+
+  /* --- NEWLY ADDED COMPONENTS & UTILITIES --- */
+  
+  /* Liquid Glass Button for App/Play Store */
+  .liquid-glass-button {
+    @apply inline-flex items-center p-2.5 pr-5 rounded-xl text-black;
+    @apply bg-white/40 backdrop-blur-xl border border-white/20;
+    @apply shadow-lg transition-all duration-300 ease-in-out;
+    @apply hover:bg-white/60 hover:shadow-xl hover:-translate-y-0.5;
+  }
+
+  /* Animation Utilities */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .animate-title-pop-in {
+    animation: title-pop-in 1s ease-out forwards;
+  }
+
+
+  .animate-modal-fade-in-scale {
+    animation: modal-fade-in-scale 0.3s ease-out forwards;
+  }
+}
+
+@keyframes slide {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.brutalist-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 180px; /* Adjusted width for better fit */
+  height: 60px;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  border: 3px solid #fff;
+  outline: 3px solid #000;
+  box-shadow: 6px 6px 0 #4B3011; /* MODIFIED: Brown accent color */
+  transition: all 0.1s ease-out;
+  padding: 0 15px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.brutalist-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6), /* Slightly more subtle shine */
+    transparent
+  );
+  z-index: 1;
+  transition: none;
+  opacity: 0;
+}
+
+.brutalist-button:hover::before {
+  opacity: 1;
+  animation: slide 1.5s infinite; /* Made animation a bit faster */
+}
+
+.brutalist-button:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0 #4B3011; /* MODIFIED: Brown accent color */
+  background-color: #000;
+  color: #fff;
+}
+
+.brutalist-button:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0 #4B3011; /* MODIFIED: Brown accent color */
+  background-color: #fff;
+  color: #000;
+  border-color: #000;
+}
+
+.brutalist-logo {
+  width: 28px; /* Adjusted size */
+  height: 28px;
+  margin-right: 12px; /* Adjusted margin */
+  flex-shrink: 0;
+  transition: transform 0.2s ease-out;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brutalist-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.brutalist-button:hover .brutalist-logo {
+  transform: rotate(-10deg) scale(1.1);
+}
+
+.brutalist-button:active .brutalist-logo {
+  transform: rotate(10deg) scale(0.9);
+}
+
+.button-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.2;
+  transition: transform 0.2s ease-out;
+  position: relative;
+  z-index: 1;
+}
+
+.brutalist-button:hover .button-text {
+  transform: skew(-5deg);
+}
+
+.brutalist-button:active .button-text {
+  transform: skew(5deg);
+}
+
+.button-text span:first-child {
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.button-text span:last-child {
+  font-size: 16px;
+}
+
+/* Add this to your main index.css file */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-gray-800; /* Example base font */
+  }
+}
+
+/* --- ADD THESE ANIMATIONS --- */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 

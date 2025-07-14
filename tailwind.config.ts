@@ -79,8 +79,8 @@ export default {
                 sm: 'calc(var(--radius) - 4px)'
             },
             fontFamily: {
-                sans: ['"DM Sans"', 'sans-serif'],
-                display: ['"Poppins"', 'sans-serif'],
+                sans: ['"Cal Sans"', 'sans-serif'],
+                display: ['"Cal Sans"', 'sans-serif'],
             },
             keyframes: {
                 'accordion-down': {

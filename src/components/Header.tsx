@@ -1,21 +1,28 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, FC } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 // Update this path to the location of your SVG logo file
 const LOGO_SVG_PATH = 'Untitled-3_copy.svg'; // Replace with your actual SVG path
 
+// --- TypeScript: Define props type for the modal ---
+interface BetaTesterModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
 // Beta Tester Modal Component with Google Apps Script integration
-const BetaTesterModal = ({ isOpen, onClose }) => {
-  const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); 
-  const modalRef = useRef(null);
+const BetaTesterModal: FC<BetaTesterModalProps> = ({ isOpen, onClose }) => {
+  const [email, setEmail] = useState<string>('');
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   // Google Apps Script URL for form submissions
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPJtAefgTMeEmQYm4WEoMiHCJzfktRfi3MAzW9awuoBSHMRyUbd8dCFyDW7R3qeMaC/exec';
 
   useEffect(() => {
-    const handleEscape = (event) => {
+    const handleEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose();
     };
     if (isOpen) {
@@ -25,8 +32,8 @@ const BetaTesterModal = ({ isOpen, onClose }) => {
   }, [isOpen, onClose]);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
         onClose();
       }
     };
@@ -41,40 +48,28 @@ const BetaTesterModal = ({ isOpen, onClose }) => {
       const timer = setTimeout(() => {
         setSubmitStatus(null);
         setEmail('');
-      }, 300); 
+      }, 300);
       return () => clearTimeout(timer);
     }
   }, [isOpen]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    // Simple email validation
     if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
       alert("Please enter a valid email address");
       return;
     }
-    
     setIsSubmitting(true);
-    
     try {
-      // Create form data with correct parameter names
       const formData = new FormData();
       formData.append('email', email);
-      formData.append('type', 'beta'); // Specify this is a beta sign-up
-      
-      // Send data to Google Apps Script
+      formData.append('type', 'beta');
       await fetch(SCRIPT_URL, {
         method: 'POST',
         body: formData,
-        mode: 'no-cors' // Required for Google Apps Script
+        mode: 'no-cors'
       });
-      
-      // Since we're using no-cors, we can't read the response
-      // Just assume it worked if no error was thrown
       setSubmitStatus('success');
-      
-      // Close modal after success message is shown
       setTimeout(() => {
         onClose();
       }, 2500);
@@ -86,7 +81,7 @@ const BetaTesterModal = ({ isOpen, onClose }) => {
     }
   };
 
-  if (!isOpen) return null; 
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-custom-black/70 flex items-center justify-center z-[100] p-4">
@@ -172,26 +167,22 @@ const BetaTesterModal = ({ isOpen, onClose }) => {
   );
 };
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showBetaModal, setShowBetaModal] = useState(false);
+const Header: FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [showBetaModal, setShowBetaModal] = useState<boolean>(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-        {/* Logo SVG instead of text */}
-        <a href="/" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <img
             src={LOGO_SVG_PATH}
             alt="You'll Get It!"
             className="h-16 w-auto"
           />
-        </a>
-        {/* Desktop Navigation */}
+        </Link>
+
         <nav className="hidden md:flex space-x-8 items-center">
-          <a href="/" className="font-medium hover:text-yellit-primary transition-colors">
-            Home
-          </a>
           <a href="/#how-it-works" className="font-medium hover:text-yellit-primary transition-colors">
             How It Works
           </a>
@@ -201,14 +192,17 @@ const Header = () => {
           <a href="/#roadmap" className="font-medium hover:text-yellit-primary transition-colors">
             Roadmap
           </a>
-          <button 
-            onClick={() => setShowBetaModal(true)} 
+          <Link to="/newsletter" className="font-medium hover:text-yellit-primary transition-colors">
+            Newsletter
+          </Link>
+          <button
+            onClick={() => setShowBetaModal(true)}
             className="font-sans bg-custom-black text-yellit-primary py-2 px-6 rounded-lg font-semibold transition-all hover:bg-gray-800"
           >
             Become a BETA TESTER
           </button>
         </nav>
-        {/* Mobile Menu Button */}
+
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden p-2"
@@ -217,13 +211,10 @@ const Header = () => {
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
-      {/* Mobile Navigation */}
+
       {isMenuOpen && (
         <div className="md:hidden px-4 pt-2 pb-4 bg-white">
           <nav className="flex flex-col space-y-4">
-            <a href="/" className="font-medium hover:text-yellit-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
-              Home
-            </a>
             <a href="/#how-it-works" className="font-medium hover:text-yellit-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
               How It Works
             </a>
@@ -233,11 +224,14 @@ const Header = () => {
             <a href="/#roadmap" className="font-medium hover:text-yellit-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
               Roadmap
             </a>
-            <button 
+            {/* <Link to="/newsletter" className="font-medium hover:text-yellit-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+              Newsletter
+            </Link> */}
+            <button
               onClick={() => {
                 setIsMenuOpen(false);
                 setShowBetaModal(true);
-              }} 
+              }}
               className="font-sans bg-custom-black text-yellit-primary py-2 px-6 rounded-lg font-semibold transition-all hover:bg-gray-800 text-center w-full"
             >
               Become a BETA TESTER
@@ -245,8 +239,7 @@ const Header = () => {
           </nav>
         </div>
       )}
-      
-      {/* Beta Tester Modal */}
+
       <BetaTesterModal isOpen={showBetaModal} onClose={() => setShowBetaModal(false)} />
     </header>
   );

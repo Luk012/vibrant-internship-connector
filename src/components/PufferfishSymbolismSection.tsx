@@ -38,7 +38,7 @@ const PufferfishSymbolismSection: React.FC = () => {
               }}
               eyeBounds={{
                 maxHorizontal: 10,      // Restrict horizontal movement (pixels)
-                maxVertical: 5,        // Restrict vertical movement (pixels)
+                maxVertical: 1,        // Restrict vertical movement (pixels)
                 maxDownward: 15,        // Allow more downward movement (pixels)
                 curveIntensity: 0.8    // Control how strongly eyes follow curve (0-1)
               }}

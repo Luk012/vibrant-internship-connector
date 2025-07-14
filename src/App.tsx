@@ -12,7 +12,9 @@ import CookiePolicy from './components/CookiePolicy';
 import GDPRCompliance from './components/GDPRCompliance';
 import AIUsagePolicy from './components/AIUsagePolicy';
 import Roadmap from './components/Roadmap';
+import NewsletterPage from "./components/NewsletterPage.tsx";
 import Mission from './components/Mission';
+import ArticlePage from "./components/ArticlePage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +33,8 @@ const App = () => (
           <Route path="/gdpr" element={<GDPRCompliance />} />
           <Route path="/ai-usage" element={<AIUsagePolicy />} />
           <Route path="/roadmap" element={<Roadmap />} />
+          <Route path="/newsletter" element={<NewsletterPage />} />
+          <Route path="/newsletter/:id" element={<ArticlePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
