@@ -192,9 +192,9 @@ const Header: FC = () => {
           <a href="/#roadmap" className="font-medium hover:text-yellit-primary transition-colors">
             Roadmap
           </a>
-          <Link to="/newsletter" className="font-medium hover:text-yellit-primary transition-colors">
+          {/* <Link to="/newsletter" className="font-medium hover:text-yellit-primary transition-colors">
             Newsletter
-          </Link>
+          </Link> */}
           <button
             onClick={() => setShowBetaModal(true)}
             className="font-sans bg-custom-black text-yellit-primary py-2 px-6 rounded-lg font-semibold transition-all hover:bg-gray-800"
