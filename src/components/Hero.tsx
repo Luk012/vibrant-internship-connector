@@ -311,13 +311,13 @@ const HeroSection = () => {
           {/* --- BRUTALIST DOWNLOAD BUTTONS --- */}
           <div className="flex flex-col sm:flex-row justify-start items-start sm:items-center space-y-6 sm:space-y-0 sm:space-x-6 w-full">
             <BrutalistButton 
-              href="#_googleplay"
+              href="https://play.google.com/store/apps/details?id=youllgetit.app"
               icon={<GooglePlayBrutalistIcon />}
               textLine1="GET IT ON"
               textLine2="Google Play"
             />
             <BrutalistButton 
-              href="#_appstore"
+              href="https://apps.apple.com/ro/app/youll-get-it/id6747272202"
               icon={<AppleBrutalistIcon />}
               textLine1="Download on the"
               textLine2="App Store"
