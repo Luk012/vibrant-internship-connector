@@ -1,4 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, forwardRef } from 'react';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
+
+// ==================================================================================
+//  STEP DEFINITIONS & CARD IMAGES
+// ==================================================================================
 
 const steps = [
   {
@@ -22,6 +27,129 @@ const steps = [
     emoji: "🎯"
   }
 ];
+
+/*
+  ✅ IMPORT YOUR CARD IMAGES HERE
+  (Using placeholder paths)
+*/
+import card1 from '/card1.png';
+import card2 from '/card2.png';
+import card3 from '/card3.png'; // Example: reusing images
+import card4 from '/card4.png'; // Example: reusing images
+
+const cardImages = [card1, card2, card3, card4];
+
+
+// ==================================================================================
+//  SWIPE CARD ANIMATION COMPONENTS
+// ==================================================================================
+
+const TinderCard = forwardRef(({ image, x }, ref) => {
+  const rotate = useTransform(x, [-250, 250], [-25, 25]);
+  const greenOpacity = useTransform(x, [20, 150], [0, 1]);
+  const redOpacity = useTransform(x, [-20, -150], [0, 1]);
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ x, rotate }}
+      className="absolute w-full h-full"
+    >
+      <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg">
+        <img
+          src={image}
+          alt="Internship card"
+          className="absolute inset-0 h-full w-full"
+          style={{ objectFit: 'cover' }}
+        />
+        <motion.div
+          style={{ opacity: greenOpacity }}
+          className="absolute inset-0 h-full w-full bg-gradient-to-br from-green-400/80 to-emerald-500/10 pointer-events-none"
+        />
+        <motion.div
+          style={{ opacity: redOpacity }}
+          className="absolute inset-0 h-full w-full bg-gradient-to-bl from-red-400/80 to-rose-500/10 pointer-events-none"
+        />
+      </div>
+    </motion.div>
+  );
+});
+
+const CardStack = () => {
+  const [cards, setCards] = useState(cardImages);
+  const x = useMotionValue(0);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const swipeLoop = async () => {
+      while (isMounted) {
+        await new Promise(res => setTimeout(res, 1500));
+        if (!isMounted) break;
+
+        await animate(x, 250, { type: 'spring', stiffness: 100, damping: 20 });
+        if (!isMounted) break;
+        
+        setCards(prev => [...prev.slice(1), prev[0]]);
+        animate(x, 0, { type: 'spring', stiffness: 200, damping: 20 });
+
+        await new Promise(res => setTimeout(res, 1500));
+        if (!isMounted) break;
+
+        await animate(x, -250, { type: 'spring', stiffness: 100, damping: 20 });
+        if (!isMounted) break;
+
+        setCards(prev => [...prev.slice(1), prev[0]]);
+        animate(x, 0, { type: 'spring', stiffness: 200, damping: 20 });
+      }
+    };
+
+    swipeLoop();
+
+    return () => {
+      isMounted = false;
+      x.stop();
+    };
+  }, [x]);
+
+
+  return (
+    <div className="relative w-60 h-[400px] md:w-96 md:h-[600px]">
+      {cards.slice(1).reverse().map((card, index) => {
+        const trueIndex = cards.length - 1 - index;
+        return (
+            <motion.div
+              key={`${card}-${index}-bg`}
+              style={{ 
+                backgroundImage: `url(${card})`,
+                zIndex: -trueIndex,
+              }}
+              className="absolute w-full h-full bg-cover bg-center rounded-2xl"
+              initial={{ scale: 1, y: 0 }}
+              animate={{
+                scale: 1 - trueIndex * 0.04,
+                y: -trueIndex * 25,
+              }}
+              transition={{type: 'spring', stiffness: 100, damping: 20}}
+            />
+        );
+      })}
+      
+      {cards.length > 0 && (
+        <TinderCard
+          key={cards[0]}
+          image={cards[0]}
+          x={x}
+        />
+      )}
+    </div>
+  );
+};
+
+
+// ==================================================================================
+//  INFORMATION CARD COMPONENT
+// ==================================================================================
 
 const StepCard = ({ step, index }) => {
   const cardRef = useRef(null);
@@ -108,15 +236,18 @@ const StepCard = ({ step, index }) => {
   );
 };
 
+
+// ==================================================================================
+//  MAIN HOW-IT-WORKS SECTION
+// ==================================================================================
+
 const HowItWorks = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
-  const buttonRef = useRef(null);
   const [animationStarted, setAnimationStarted] = useState(false);
   
   useEffect(() => {
-    // Create a single observer for the section
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !animationStarted) {
@@ -150,7 +281,6 @@ const HowItWorks = () => {
     const typingElement = titleRef.current;
     if (!typingElement) return;
     
-    // Clear any previous content
     typingElement.textContent = "";
     
     const prefix = "You'll be a ";
@@ -164,117 +294,51 @@ const HowItWorks = () => {
       const currentPhrase = phrases[phraseIndex];
       
       if (isDeleting) {
-        // Deleting text (only delete the job part, not the prefix)
         const currentText = currentPhrase.substring(0, charIndex - 1);
         typingElement.textContent = prefix + currentText;
         charIndex--;
-        typingSpeed = 50; // faster when deleting
+        typingSpeed = 50;
       } else {
-        // Typing text
         typingElement.textContent = prefix + currentPhrase.substring(0, charIndex + 1);
         charIndex++;
-        typingSpeed = 100; // slower when typing
+        typingSpeed = 100;
       }
       
-      // Add the exclamation point and highlight
       typingElement.innerHTML = typingElement.textContent + "<span class='text-yellit-primary'>!</span>";
       
-      // If finished typing the phrase
       if (!isDeleting && charIndex === currentPhrase.length) {
-        typingSpeed = 1500; // pause at the end
+        typingSpeed = 1500;
         isDeleting = true;
-      }
-      // If finished deleting the phrase
-      else if (isDeleting && charIndex === 0) {
+      } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length; // move to next phrase
-        typingSpeed = 200; // brief pause before starting new phrase
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        typingSpeed = 200;
       }
       
       clearTimeout(typingInterval);
       typingInterval = setTimeout(type, typingSpeed);
     };
     
-    // Start with the prefix immediately
     typingElement.textContent = prefix;
     typingElement.innerHTML = typingElement.textContent + "<span class='text-yellit-primary'>!</span>";
     
-    // Start the typing animation (with a small delay)
     setTimeout(type, 500);
     
-    // Cleanup function to clear interval if component unmounts
-    return () => {
-      clearTimeout(typingInterval);
-    };
+    return () => clearTimeout(typingInterval);
   };
   
   return (
     <section ref={sectionRef} id="how-it-works" className="py-24">
-      <style>
-        {`
-          /* Card reveal animation - smoother with less bounce */
-          @keyframes cardReveal {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-          }
-          .card-hidden {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          .animate-card-reveal {
-            animation: cardReveal 0.6s ease-out forwards;
-          }
-          
-          /* Pop in animation for numbers */
-          @keyframes popIn {
-            0% { transform: scale(0); opacity: 0; }
-            60% { transform: scale(1.2); }
-            100% { transform: scale(1); opacity: 1; }
-          }
-          .animate-pop-in {
-            opacity: 0;
-            animation: popIn 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
-          }
-          
-          /* Bounce in animation for emojis */
-          @keyframes bounceIn {
-            0% { transform: translateY(-100px); opacity: 0; }
-            60% { transform: translateY(10px); }
-            100% { transform: translateY(0); opacity: 1; }
-          }
-          .animate-bounce-in {
-            opacity: 0;
-            animation: bounceIn 0.6s forwards;
-          }
-          
-          /* Slide up animation */
-          @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-          }
-          .animate-slide-up {
-            opacity: 0;
-            animation: slideUp 0.5s forwards;
-          }
-          
-          /* Fade in animation */
-          @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-          }
-          .animate-fade-in {
-            opacity: 0;
-            animation: fadeIn 0.8s forwards;
-          }
-          
-          /* Cursor blink animation */
-          @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-          }
-        `}
-      </style>
+      {/* You can keep the styles here or move them to a global CSS file */}
+      <style>{`
+        /* Add any necessary keyframes or styles from the original component if needed */
+        @keyframes blink { 
+          50% { opacity: 0; }
+        }
+      `}</style>
+      
       <div className="section-container">
+        {/* --- Header Text --- */}
         <div className="text-center mb-20">
           <div className="mb-2">
             <h2
@@ -293,22 +357,21 @@ const HowItWorks = () => {
           </p>
         </div>
         
-        {/* 2x2 Grid Layout */}
+        {/* --- Swipe Card Animation --- */}
+        <div className="flex justify-center my-20">
+          <CardStack />
+        </div>
+        
+        {/* --- Informational Step Cards Grid --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-          {/* First Row */}
           <StepCard step={steps[0]} index={0} />
           <StepCard step={steps[1]} index={1} />
         </div>
-        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Second Row */}
           <StepCard step={steps[2]} index={2} />
           <StepCard step={steps[3]} index={3} />
         </div>
         
-        <div className="text-center mt-16">
-        
-        </div>
       </div>
     </section>
   );
